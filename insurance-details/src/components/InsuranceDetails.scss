@@ -1,35 +1,62 @@
+$primary-color: #007bff;
+$primary-hover-color: #0056b3;
+$background-color: #f9f9f9;
+$border-color: #ddd;
+$text-color: #333;
+$table-header-color: #f5f5f5; // Light gray for table header
+$table-row-hover-color: #e6f7ff;
+$table-row-alt-color: #f2f2f2;
+
 .insurance-details {
+  font-family: 'Arial', sans-serif;
   margin: 20px;
-  font-family: Arial, sans-serif;
+  padding: 20px;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  background-color: $background-color;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   h1 {
-    color: #333;
+    font-size: 24px;
+    color: $text-color;
+    margin-bottom: 20px;
   }
 
-  button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:not(:disabled) {
-    background-color: #007bff; /* Blue */
-    color: #fff;
-  }
-  
-  button:not(:disabled):hover {
-    background-color: #0056b3; /* Darker blue */
-  }
+  .sum-insured-input {
+    margin-bottom: 20px;
 
-  button:disabled {
-    background-color: #e0e0e0; /* Light gray */
-    color: #a0a0a0; /* Darker gray for text */
-    cursor: default !important;
-    opacity: 0.6;
-    pointer-events: none;
+    label {
+      font-size: 16px;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      input {
+        padding: 8px;
+        border: 1px solid $border-color;
+        border-radius: 4px;
+        width: 150px;
+      }
+
+      button {
+        padding: 8px 16px;
+        background-color: $primary-color;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+
+        &:hover {
+          background-color: $primary-hover-color;
+        }
+      }
+    }
   }
 
   .insurance-table {
@@ -38,27 +65,40 @@
     margin-top: 20px;
 
     th, td {
-      border: 1px solid #ccc;
       padding: 10px;
       text-align: left;
+      border-bottom: 1px solid $border-color;
     }
 
     th {
-      background-color: #f4f4f4;
+      background-color: $table-header-color; // Changed to light gray
+      color: $text-color; // Keep text dark for good contrast
+      font-size: 16px;
     }
 
-    td button {
-      margin: 0 5px;
-      padding: 5px 10px;
-      border: none;
-      background-color: #007bff;
-      color: white;
-      border-radius: 3px;
-      cursor: pointer;
-    }
+    tr {
+      &:nth-child(even) {
+        background-color: $table-row-alt-color;
+      }
 
-    td button:hover {
-      background-color: #0056b3;
+      &:hover {
+        background-color: $table-row-hover-color;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 15px;
+
+    .sum-insured-input {
+      .input-group {
+        flex-direction: column;
+        align-items: flex-start;
+
+        input {
+          width: 100%;
+        }
+      }
     }
   }
 }

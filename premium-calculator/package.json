@@ -44,6 +44,7 @@
     "@babel/preset-react": "^7.26.3",
     "babel-loader": "^9.2.1",
     "copy-webpack-plugin": "^12.0.2",
-    "worker-loader": "^3.0.8"
+    "worker-loader": "^3.0.8",
+    "sass": "^1.83.0"
   }
 }

@@ -1,5 +1,6 @@
-import React, { useState, useEffect, lazy } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createWorker } from '../workers/createWorker';
+import './PremiumDetails.scss';
 
 export default function PremiumDetails() {
   const [premiumPerYear, setPremiumPerYear] = useState(0);
@@ -7,12 +8,13 @@ export default function PremiumDetails() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [premWorker, setPremWorker] = useState(null);
-  const [sumInsured, setSumInsured] = useState(300000); //Considered 3 lakhs as default value so that its index rendered successfully
+  //Considered 3 lakhs as default value so that MFE rendered successfully as a self hosted application
+  const [sumInsured, setSumInsured] = useState(300000); 
 
   useEffect(() => {
     import("insuranceDetails/InsuranceDetailsIndex")
       .then(({ getInputValue, subscribeToSumInsuredUpdates }) => {
-        console.log("Sum Insured from MFE:", getInputValue());
+        console.log("Sum Insured from insuranceDetails:", getInputValue());
         setSumInsured(getInputValue());
         const unsubscribe = subscribeToSumInsuredUpdates((updatedValue) => {
           console.log("Sum Insured updated:", updatedValue);
@@ -23,7 +25,7 @@ export default function PremiumDetails() {
         };
       })
       .catch((err) => {
-        console.error("Failed to load MFE module:", err);
+        console.error("Failed to load insuranceDetails module:", err);
       });
   }, []);
 
@@ -34,24 +36,6 @@ export default function PremiumDetails() {
     }
     loadWorker();
   }, []);
-
-  /*
-  useEffect(() => {
-    const handleSumInsuredUpdate = (event) => {
-      setSumInsured(event.detail.sumInsured);
-      console.log('Updated Sum Insured:', event.detail.sumInsured);
-      calculatePremiumWithWorker(event.detail.sumInsured);
-    };
-
-    // Listen for the custom event
-    window.addEventListener('sumInsuredUpdated', handleSumInsuredUpdate);
-
-    // Cleanup the event listener on component unmount
-    return () => {
-      window.removeEventListener('sumInsuredUpdated', handleSumInsuredUpdate);
-    };
-  }, []);
-  */
 
   // This effect will run every time sumInsured changes
   useEffect(() => {
@@ -95,12 +79,18 @@ export default function PremiumDetails() {
   if(!premWorker) return <></>
 
   return (
-    <div>
+    <div className="premium-details">
       <h2>Premium Details</h2>
-      {isLoading && <p>Calculating Premium...</p>}
-      {error && <p>{error}</p>}
-      <p>Calculated Premium/year: ₹ {premiumPerYear}</p>
-      <p>Calculated Premium/month: ₹ {premiumPerMonth}</p>
+      {isLoading && <p className="loading-message">Calculating Premium...</p>}
+      {error && <p className="error-message">{error}</p>}
+      <div className="premium-amount">
+        <p className="premium-per-year">
+          Calculated Premium/year: ₹ <span>{Number(premiumPerYear).toLocaleString('en-IN')}</span>
+        </p>
+        <p className="premium-per-month">
+          Calculated Premium/month: ₹ <span>{Number(premiumPerMonth).toLocaleString('en-IN')}</span>
+        </p>
+      </div>
     </div>
   );
 }

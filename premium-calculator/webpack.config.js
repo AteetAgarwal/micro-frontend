@@ -60,7 +60,7 @@ module.exports = {
         insuranceDetails: 'insuranceDetails@http://localhost:8006/remoteEntry.js'
       },
       exposes: {
-        './InsurancePremiumIndex': './src/components/premiumDetails',
+        './InsurancePremiumIndex': './src/components/PremiumDetails',
       },
       shared: {
         react: { singleton: true, eager: true},
