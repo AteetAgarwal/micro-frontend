@@ -1,0 +1,66 @@
+$primary-color: #0056b3;
+$secondary-color: #6c757d;
+$background-color: #f8f9fa;
+$border-color: #ddd;
+$text-color: #333;
+$container-padding: 20px;
+
+.container-app {
+  font-family: 'Arial', sans-serif;
+  background-color: $background-color;
+  padding: $container-padding;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 1200px;
+
+  h1 {
+    font-size: 28px;
+    color: $primary-color;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  .mfe-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+
+    > div {
+      flex: 1;
+      padding: 20px;
+      background-color: white;
+      border: 1px solid $border-color;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+  }
+
+  .mfe-container #insurance-details {
+    border-left: 5px solid $primary-color; // Highlight for Insurance Details
+  }
+
+  .mfe-container #premium-details {
+    border-left: 5px solid $secondary-color; // Highlight for Premium Details
+  }
+
+  .loading-placeholder {
+    text-align: center;
+    color: $secondary-color;
+    font-style: italic;
+    padding: 10px;
+  }
+
+  @media (max-width: 768px) {
+    .mfe-container {
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    > div {
+      padding: 15px;
+    }
+  }
+}
