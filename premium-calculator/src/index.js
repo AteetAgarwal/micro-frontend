@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import PremiumDetails from './components/premiumDetails';
+import PremiumDetails from './components/PremiumDetails';
 
 
 const root = ReactDOM.createRoot(document.getElementById('insurance-premium'));

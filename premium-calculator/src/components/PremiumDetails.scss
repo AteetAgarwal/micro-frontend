@@ -1,0 +1,90 @@
+$primary-color: #007bff;
+$primary-hover-color: #0056b3;
+$background-color: #f9f9f9;
+$border-color: #ddd;
+$text-color: #333;
+$success-color: #28a745;
+$error-color: #dc3545;
+$loading-color: #6c757d;
+$border-radius: 8px;
+$box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+.premium-details {
+  font-family: 'Arial', sans-serif;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  background-color: $background-color;
+  box-shadow: $box-shadow;
+
+  h2 {
+    font-size: 22px;
+    color: $text-color;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 16px;
+    color: $text-color;
+    margin: 10px 0;
+  }
+
+  .loading-message {
+    color: $loading-color;
+    font-style: italic;
+    margin-top: 10px;
+  }
+
+  .error-message {
+    color: $error-color;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .premium-amount {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 20px;
+
+    span {
+      font-weight: 700;
+      color: $primary-color;
+    }
+  }
+
+  .premium-amount p {
+    color: $text-color;
+  }
+
+  .premium-per-year {
+    color: $success-color;
+  }
+
+  .premium-per-month {
+    color: $primary-color;
+  }
+}
+
+@media (max-width: 768px) {
+  .premium-details {
+    padding: 15px;
+
+    h2 {
+      font-size: 20px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+
+    .premium-amount {
+      font-size: 16px;
+
+      span {
+        font-size: 18px;
+      }
+    }
+  }
+}

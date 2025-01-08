@@ -51,7 +51,6 @@ function InsuranceDetails() {
     if (data) {
       setLocalInsuranceData(JSON.parse(data));
       setInsuranceData(JSON.parse(data)); // Update external reference
-      dispatchSumInsuredUpdateEvent(localInputValue);
     } else {
       setLocalInsuranceData(sampleInsuranceData);
       setInsuranceData(sampleInsuranceData); // Fallback data
@@ -68,29 +67,23 @@ function InsuranceDetails() {
   const handleInputChange = (e) => {
     const updatedValue = parseInt(e.target.value, 10) || 0;
     setLocalInputValue(updatedValue);
-    setInputValue(updatedValue); // Sync external reference
   };
 
   const handleSubmit = () => {
-    dispatchSumInsuredUpdateEvent(localInputValue);
-  };
-
-  const dispatchSumInsuredUpdateEvent = (value) => {
-    const event = new CustomEvent("sumInsuredUpdated", {
-      detail: { sumInsured: value },
-    });
-    window.dispatchEvent(event);
+    setInputValue(localInputValue); // Sync external reference
   };
 
   if (loading) return <div>Loading...</div>;
 
   return (
     <div className="insurance-details">
-      <h1>Policy Details</h1>
-      <div>
-        <strong>Your current sum insured:</strong> ₹{" "}
-        <input
-          type="text"
+    <h1>Policy Details</h1>
+    <div className="sum-insured-input">
+      <label htmlFor="sum-insured"><strong>Your Current Sum Insured:</strong></label>
+      <div className="input-group">
+        ₹ <input
+          id="sum-insured"
+          type="number"
           value={localInputValue}
           onChange={handleInputChange}
           placeholder="Enter sum insured"
@@ -99,27 +92,29 @@ function InsuranceDetails() {
           Submit
         </button>
       </div>
-      <table className="insurance-table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Relationship</th>
-            <th>Gender</th>
-            <th>DOB (YYYY-MM-DD)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {localInsuranceData && localInsuranceData.members.map((member, index) => (
-            <tr key={index}>
-              <td>{member.name}</td>
-              <td>{member.relationship}</td>
-              <td>{member.gender}</td>
-              <td>{member.dob}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
     </div>
+
+    <table className="insurance-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Relationship</th>
+          <th>Gender</th>
+          <th>DOB (YYYY-MM-DD)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {localInsuranceData?.members.map((member, index) => (
+          <tr key={index}>
+            <td>{member.name}</td>
+            <td>{member.relationship}</td>
+            <td>{member.gender}</td>
+            <td>{member.dob}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
   );
 }
 

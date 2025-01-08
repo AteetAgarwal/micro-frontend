@@ -2,6 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self' http://localhost:8006 http://localhost:8005;
+        script-src 'self' 'unsafe-eval' http://localhost:8006 http://localhost:8005;
+        worker-src 'self' blob: http://localhost:8005;
+        style-src 'self' 'unsafe-inline' http://localhost:8006 http://localhost:8005;
+        script-src-elem 'self' http://localhost:8006 http://localhost:8005 data:;
+        img-src 'self' http://localhost:8006 http://localhost:8005;
+        connect-src 'self' http://localhost:8006 ws://localhost:8006 http://localhost:8005 ws://localhost:8005;
+        font-src 'self' http://localhost:8006 http://localhost:8005;
+        object-src 'none';
+        frame-src 'self';
+        upgrade-insecure-requests;
+      "
+    />
+
     <title>Insurance Portal</title>
   </head>
   <body>

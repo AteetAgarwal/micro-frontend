@@ -1,4 +1,5 @@
-import React, { useState, Suspense, lazy } from 'react';
+import React, { Suspense, lazy } from 'react';
+import './App.scss';
 
 function App() {
   // Dynamic imports for MFEs
@@ -21,21 +22,21 @@ function App() {
   );
 
   return (
-      <div>
-        <h1>Insurance Portal</h1>
-        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-          <Suspense fallback={<div>Loading Insurance Details...</div>}>
-            <div id="insurance-details">
-              <InsuranceDetails />
-            </div>
-          </Suspense>
-          <Suspense fallback={<div>Loading Premium Details...</div>}>
-            <div id="premium-details">
-              <PremiumDetails/>
-            </div>
-          </Suspense>
-        </div>
+    <div className="container-app">
+      <h1>Insurance Portal</h1>
+      <div className="mfe-container">
+        <Suspense fallback={<div className="loading-placeholder">Loading Insurance Details...</div>}>
+          <div id="insurance-details">
+            <InsuranceDetails />
+          </div>
+        </Suspense>
+        <Suspense fallback={<div className="loading-placeholder">Loading Premium Details...</div>}>
+          <div id="premium-details">
+            <PremiumDetails />
+          </div>
+        </Suspense>
       </div>
+    </div>  
   );
 }
 

@@ -43,8 +43,7 @@ module.exports = {
       name: 'insuranceDetails',
       filename: 'remoteEntry.js',
       exposes: {
-        './InsuranceDetailsIndex': './src/components/InsuranceDetails',
-        './getInputValue': './src/components/InsuranceDetails'
+        './InsuranceDetailsIndex': './src/components/InsuranceDetails'
       },
       shared: {
         react: { singleton: true, eager: true},
