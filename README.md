@@ -24,10 +24,11 @@ Ensure you have the following installed on your system:
    ```bash
    git clone https://github.com/AteetAgarwal/micro-frontend.git
    ```
+   Note: Kindly refer main branch only.
 
 2. Navigate to the parent folder:  
    ```bash
-   cd parent-folder
+   cd micro-frontend
    ```
 
 3. Install dependencies for each app:  
@@ -56,6 +57,7 @@ To execute the apps using Webpack, follow these steps:
    ```bash
    npm run webpack
    ```
+3. Browse to URL: http://localhost:8006
 
 ### **2. Premium Calculator App**
 1. Navigate to the app directory:  
@@ -67,6 +69,7 @@ To execute the apps using Webpack, follow these steps:
    ```bash
    npm run webpack
    ```
+3. Browse to URL: http://localhost:8005   
 
 ### **3. Insurance Container App**
 1. Navigate to the app directory:  
@@ -78,6 +81,7 @@ To execute the apps using Webpack, follow these steps:
    ```bash
    npm run webpack
    ```
+3. Browse to URL: http://localhost:8003
 
 ---
 
