@@ -8,6 +8,13 @@ This repository contains three micro-frontend applications:
 2. **Premium Calculator** (`premium-calculator`)  
 3. **Insurance Container** (`insurance-container`)  
 
+Live URLs:
+1. Insurance Container App (Main Application): https://mfeapp.z13.web.core.windows.net/insurance-container/index.html
+2. Insurance Detail App (MFE#1):	https://mfeapp.z13.web.core.windows.net/insurance-detail/index.html
+3. Premium Calculator App (MFE#2):	https://mfeapp.z13.web.core.windows.net/premium-calculator/index.html
+
+
+
 These apps leverage **Webpack Module Federation** to demonstrate dynamic module sharing and micro-frontend integration.
 
 ---
